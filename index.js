@@ -6,6 +6,7 @@ const {data} = require("./models")
 const {lzwDecompress} = require("./algorithm/lzw/decoder")
 const {lzwCompress} = require("./algorithm/lzw/encoder")
 const {rleDecompress} = require("./algorithm/rle/decoder")
+const {rleCompress} = require("./algorithm/rle/encoder");
 
 
 app.use((req, res, next) => {
@@ -23,8 +24,8 @@ app.post("/data",(req, res) =>{
         case 'decompress':
             data.create({
                 input: req.body.input,
-                output: rleDecompress(lzwDecompress(req.body.input)),
-                algorithm: 'Run Length Encoding',
+                output: (req.body.choice==='yes')?rleDecompress(lzwDecompress(req.body.input)):lzwDecompress(req.body.input),
+                algorithm: (req.body.choice==='yes')?'Run Length Encoding':'None',
                 type: req.body.type
             }).catch((err)=>{
                 console.log(err)
@@ -33,8 +34,8 @@ app.post("/data",(req, res) =>{
         case 'compress':
             data.create({
                 input: req.body.input,
-                output: lzwCompress(req.body.input),
-                algorithm: 'Run Length Encoding',
+                output: (req.body.choice==='yes')?lzwCompress(rleCompress(req.body.input)):lzwCompress(req.body.input),
+                algorithm: (req.body.choice==='yes')?'Run Length Encoding':'None',
                 type: req.body.type
             }).catch((err)=>{
                 console.log(err)

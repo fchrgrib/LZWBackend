@@ -3,9 +3,8 @@ const {arrayOfAsciiString} = require("../../utils/utils");
 const {rleCompress} = require("../rle/encoder");
 
 
-function lzwCompress(text){
+function lzwCompress(compText){
 
-    const compText = rleCompress(text)
     let result = ""
     let checkChars = compText.charAt(0)
     let arrOfAscii = arrayOfAsciiString()
