@@ -79,7 +79,7 @@ app.delete("/:id/delete",(req, res)=>{
 const port = process.env.PORT || 3000
 db.sequelize.sync().then(()=>{
     app.listen(port,function (){
-        console.log("listen 8080")
+        console.log(`listen ${port}`)
     });
 })
 
