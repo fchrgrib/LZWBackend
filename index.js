@@ -76,8 +76,9 @@ app.delete("/:id/delete",(req, res)=>{
     res.status(200).json({status:"ok"})
 })
 
+const port = process.env.PORT || 3000
 db.sequelize.sync().then(()=>{
-    app.listen(0,function (){
+    app.listen(port,function (){
         console.log("listen 8080")
     });
 })
