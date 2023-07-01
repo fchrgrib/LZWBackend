@@ -77,7 +77,7 @@ app.delete("/:id/delete",(req, res)=>{
 })
 
 db.sequelize.sync().then(()=>{
-    app.listen(8080,function (){
+    app.listen(0,function (){
         console.log("listen 8080")
     });
 })
