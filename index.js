@@ -7,6 +7,7 @@ const {lzwDecompress} = require("./algorithm/lzw/decoder")
 const {lzwCompress} = require("./algorithm/lzw/encoder")
 const {rleDecompress} = require("./algorithm/rle/decoder")
 const {rleCompress} = require("./algorithm/rle/encoder");
+const cors = require('cors');
 
 
 app.use((req, res, next) => {
@@ -14,6 +15,12 @@ app.use((req, res, next) => {
     next();
 });
 app.use(bodyParser.json());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: '*',
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+}))
 
 
 app.post("/data",(req, res) =>{
