@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000','https://lzw-front-end.vercel.app'],
     methods: '*',
     allowedHeaders: ['Content-Type'],
     credentials: true

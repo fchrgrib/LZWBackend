@@ -6,7 +6,7 @@ function binaryToAscii(binaryCode) {
 
 function arrayOfAsciiString(){
     let result =[]
-    for (i=0;i<128/**TODO dont forget to change to 256**/;i++){
+    for (i=0;i<256;i++){
         result.push(String.fromCharCode(i))
     }
     return result
@@ -14,7 +14,7 @@ function arrayOfAsciiString(){
 
 function mapOfAsciiString(){
     let result = new Map()
-    for (i=0;i<128/**TODO dont forget to change to 256**/;i++){
+    for (i=0;i<256;i++){
         result.set(i,String.fromCharCode(i))
     }
     return result
